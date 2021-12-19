@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+
+<head>
+
+<title>Substitutie</title>
+
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta name="language" content="nl" />
+
+
+<link rel="icon" type="image/png" href="plaatjes/favicon.ico" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<script type="text/javascript" src="js/algemeen.js"></script>
+<script type="text/javascript" src="js/substitutie.js"></script>
+<script type="text/javascript" src="js/gecodeerdeteksten.js"></script>
+
+<script type="text/javascript" src="js/flotr/lib/prototype-1.6.0.2.js"></script>
+<script type="text/javascript" src="js/flotr/lib/canvas2image.js"></script>
+<script type="text/javascript" src="js/flotr/lib/canvastext.js"></script>
+<script type="text/javascript" src="js/flotr/flotr-0.2.0-alpha.js"></script>
+
+</head>
+
+<body>
+
+<div class="content">
+<div style="float:right"><a href="index.html">terug</a></div><br>
+<br style="clear:both;">
+<div style="float:right; font-size: 20px; font-weight: bold;">Codes kraken d.m.v. substitutie</div>
+<p class="pagetitle">
+
+<div style="float:left;">
+<a  href="http://www.ewi.tudelft.nl/live/pagina.jsp?id=3ecda2bb-c9cf-4caf-8240-72e16a35a84d&lang=nl">
+<img src="plaatjes/headerimage.gif" alt="" class="logo" />
+</a>
+</div>
+
+</p>
+
+<div style="clear: both;">
+<br clear=all>
+
+<a id=invoeren></a>
+<h2>Invoeren van de gecodeerde tekst</h2>
+
+<p>We gaan ervan uit dat de interpunctie van de oorspronkelijk tekst niet gecodeerd is, en dat hier ook het codewoord
+niet boven is geschreven. Daarom kan alle interpunctie verwijderd worden (dit doen de programma's op deze pagina automatisch).
+
+
+<form id="cwlform">
+
+<div style="float:left;">
+<div>
+<div style="float: left;" >
+<textarea id="text" rows="10" cols="50" onKeyUp="" style="margin-bottom: 10px;" >
+</textarea>
+</div>
+
+<div style="float: left; margin-left: 20px;">
+Klik hieronder om een tekst in te vullen.<br><br>
+<input type="button" value="Tekst opg 1.3" onclick="tekstInvullen('subs1')">
+<input type="button" value="Tekst opg 1.4" onclick="tekstInvullen('subs2')"><br><br><br><br><br><br>
+
+<input type="button" value="Analyseer!" onClick="sorteerSubs(false),analyse(document.getElementById('cwlform').text.value),drawSubsChart(true),document.getElementById('textcopy').value=document.getElementById('text').value">
+<input type="reset" value="Leegmaken" onClick="resetSubsCode()">
+</div>
+</div>
+</div>
+</form>
+
+<br style="clear: both;">
+
+<a id=freqanalysis></a>
+
+<h2>Frequentieanalyse code</h2>
+
+<form id="letterform">
+
+<table border=1 style="margin-top:10px;">
+ <tr>
+	<td style="border:none;">
+  <td align="center"  id="LETTER0" >A
+  <td align="center"  id="LETTER1">B
+  <td align="center"  id="LETTER2">C
+  <td align="center"  id="LETTER3">D
+  <td align="center"  id="LETTER4">E
+  <td align="center"  id="LETTER5">F
+  <td align="center"  id="LETTER6">G
+  <td align="center"  id="LETTER7">H
+  <td align="center"  id="LETTER8">I
+  <td align="center"  id="LETTER9">J
+  <td align="center"  id="LETTER10">K
+  <td align="center"  id="LETTER11">L
+  <td align="center"  id="LETTER12">M
+  <td align="center"  id="LETTER13">N
+  <td align="center"  id="LETTER14">O
+  <td align="center"  id="LETTER15">P
+  <td align="center"  id="LETTER16">Q
+  <td align="center"  id="LETTER17">R
+  <td align="center"  id="LETTER18">S
+  <td align="center"  id="LETTER19">T
+  <td align="center"  id="LETTER20">U
+  <td align="center"  id="LETTER21">V
+  <td align="center"  id="LETTER22">W
+  <td align="center"  id="LETTER23">X
+  <td align="center"  id="LETTER24">Y
+  <td align="center"  id="LETTER25">Z
+ <tr>
+
+ <td style="border:none;">Frequentie:</td>
+  <td align="center" id="freq0">?
+  <td align="center" id="freq1">?
+  <td align="center" id="freq2">?
+  <td align="center" id="freq3">?
+  <td align="center" id="freq4">?
+  <td align="center" id="freq5">?
+  <td align="center" id="freq6">?
+  <td align="center" id="freq7">?
+  <td align="center" id="freq8">?
+
+  <td align="center" id="freq9">?
+  <td align="center" id="freq10">?
+  <td align="center" id="freq11">?
+  <td align="center" id="freq12">?
+  <td align="center" id="freq13">?
+  <td align="center" id="freq14">?
+  <td align="center" id="freq15">?
+  <td align="center" id="freq16">?
+  <td align="center" id="freq17">?
+
+  <td align="center" id="freq18">?
+  <td align="center" id="freq19">?
+  <td align="center" id="freq20">?
+  <td align="center" id="freq21">?
+  <td align="center" id="freq22">?
+  <td align="center" id="freq23">?
+  <td align="center" id="freq24">?
+  <td align="center" id="freq25">?
+
+ <tr>
+
+ <td style="border:none;">Percentage:</td>
+  <td align="center" id="perc0">?
+  <td align="center" id="perc1">?
+  <td align="center" id="perc2">?
+  <td align="center" id="perc3">?
+  <td align="center" id="perc4">?
+  <td align="center" id="perc5">?
+  <td align="center" id="perc6">?
+  <td align="center" id="perc7">?
+  <td align="center" id="perc8">?
+
+  <td align="center" id="perc9">?
+  <td align="center" id="perc10">?
+  <td align="center" id="perc11">?
+  <td align="center" id="perc12">?
+  <td align="center" id="perc13">?
+  <td align="center" id="perc14">?
+  <td align="center" id="perc15">?
+  <td align="center" id="perc16">?
+  <td align="center" id="perc17">?
+
+  <td align="center" id="perc18">?
+  <td align="center" id="perc19">?
+  <td align="center" id="perc20">?
+  <td align="center" id="perc21">?
+  <td align="center" id="perc22">?
+  <td align="center" id="perc23">?
+  <td align="center" id="perc24">?
+  <td align="center" id="perc25">?
+
+ </table>
+
+<div style="margin-top:10px; margin-left:30px;">
+<table style="border:none;">
+  <tr style="border:none;">
+ <td style="border:none;">
+   <input type="button" id="tabel-button-show" value="Frequentietabel tonen" onClick="drawSubsChartHulp(true,$('merge-button-true').style.display=='none')">
+   <input type="button" id="tabel-button-hide" value="Frequentietabel verbergen" onClick="drawSubsChartHulp(false,$('merge-button-true').style.display=='none')" style="display:none">
+ </td>
+ <td style="border:none;">
+ <input type="button" id="sorteer-button-true" value="Sorteer de data" onClick="sorteerSubs(true),drawSubsChartHulp(true,$('merge-button-true').style.display=='none')">
+ <input type="button" id="sorteer-button-false" value="Sorteren ongedaan maken" onClick="sorteerSubs(false),drawSubsChartHulp(true,$('merge-button-true').style.display=='none')" style="display:none;">
+  </td>
+ <td style="border:none;">
+ <input type="button" id="merge-button-true" value="Tabellen samenvoegen" onClick="drawSubsChartHulp(true,true)">
+ <input type="button" id="merge-button-false" value="Tabellen scheiden" onClick="drawSubsChartHulp(true,false)" style="display:none;">
+  </td>
+ </tr>
+</table>
+<div id="frequentie-container" style="width:1000px;height:350px;display:none;">
+	Selecteer een taal om je code mee te vergelijken.
+	<select style="margin:5px; width:200px;" id="selectTaal"
+	  onChange="drawSubsChartHulp(true,$('merge-button-true').style.display=='none'
+	  && $('selectTaal').value!='0')">
+		<option value="0" selected>selecteer een taal</option>
+		<option value="nl">Nederlands</option>
+		<option value="en">Engels</option>
+	</select>
+	<div id="freq-chart-container" style="width:500px;height:300px; float:left;"></div>
+	<div id="lang-chart-container" style="width:500px;height:300px; float: right;"></div>
+</div>
+</div>
+</form>
+
+
+<h2>Decoderen</h2>
+
+Vul de vakjes hieronder in. Klik vervolgens op de knop 'Decodeer' om je voorlopige resultaat te zien.
+
+<form id="subsdecodeform">
+
+<table border=1 style="margin-top:10px;">
+ <tr>
+  <td style="border:none;">Origineel</td>
+  <td align="center">a
+  <td align="center">b
+  <td align="center">c
+  <td align="center">d
+  <td align="center">e
+  <td align="center">f
+  <td align="center">g
+  <td align="center">h
+  <td align="center">i
+  <td align="center">j
+  <td align="center">k
+  <td align="center">l
+  <td align="center">m
+  <td align="center">n
+  <td align="center">o
+  <td align="center">p
+  <td align="center">q
+  <td align="center">r
+  <td align="center">s
+  <td align="center">t
+  <td align="center">u
+  <td align="center">v
+  <td align="center">w
+  <td align="center">x
+  <td align="center">y
+  <td align="center">z
+ <tr>
+
+ <td style="border: none;">Codering:</td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs1"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs2"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs3"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs4"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs5"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs6"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs7"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs8"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs9"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs10"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs11"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs12"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs13"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs14"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs15"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs16"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs17"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs18"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs19"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs20"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs21"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs22"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs23"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs24"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs25"></td>
+ <td align="center" style="border:none;"><input type=text size=1 maxlength=1 id="subs26"></td>
+<tr>
+</table>
+<br><br>
+<table border=0 style="margin-left: 15px;">
+ <tr>
+  <td align="left" >
+  <td align="right">
+  <input type="button" value="Decodeer!" onClick="decodeSubsForm(),document.getElementById('textcopy').value=document.getElementById('text').value">
+  <input type="reset" value="Leegmaken"></td>
+  <td align=center><b>Gecodeerde tekst:</b></td>
+</tr>
+ <tr>
+	<td colspan="2"><textarea id="encoded" rows="9" cols="50" readonly></textarea></td>
+	<td><textarea id="textcopy" rows="9" cols="50" readonly></textarea></td>
+ <tr>
+
+  </table>
+
+</form>
+
+
+<h2>Coderen</h2>
+
+Je kunt natuurlijk ook tekst coderen. Vul de te coderen tekst in en druk vervolgens op de knop 'Coderen'.
+De substitutietabel die je hierboven hebt opgegeven wordt gebruikt.
+
+<form id="codeerform">
+<table style="margin: 15px;" border=0>
+ <tr>
+  <td align="right"></td>
+  <td align="left">
+	<input type="button" value="Codeer!" onClick="document.getElementById('codeerform').encoded.value=codeSubs(document.getElementById('codeerform').original.value)">
+	<input type="reset" value="Leegmaken">
+</td>
+</tr>
+ <tr>
+	<td><textarea id="original" rows="9" cols="50" ></textarea></td>
+	<td><textarea id="encoded" rows="9" cols="50" readonly></textarea></td>
+
+ <tr>
+
+  </table>
+</form>
+
+</body>
+
+
+</html>

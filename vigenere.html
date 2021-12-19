@@ -1,0 +1,445 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+
+<head>
+
+<title>Vigen&egrave;re gecodeerde teksten kraken</title>
+
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta name="language" content="nl" />
+
+
+<link rel="icon" type="image/png" href="plaatjes/favicon.ico" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<script type="text/javascript" src="js/algemeen.js"></script>
+<script type="text/javascript" src="js/viginere.js"></script>
+<script type="text/javascript" src="js/gecodeerdeteksten.js"></script>
+
+<script type="text/javascript" src="js/flotr/lib/prototype-1.6.0.2.js"></script>
+<script type="text/javascript" src="js/flotr/lib/canvas2image.js"></script>
+<script type="text/javascript" src="js/flotr/lib/canvastext.js"></script>
+<script type="text/javascript" src="js/flotr/flotr-0.2.0-alpha.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="content">
+<div style="float:right"><a href="index.html">terug</a></div><br>
+<br style="clear:both;">
+<div style="float:right; font-size: 20px; font-weight: bold;">Vigen&egrave;re gecodeerde teksten kraken</div>
+<p class="pagetitle">
+
+<div style="float:left;">
+<a  href="http://www.ewi.tudelft.nl/live/pagina.jsp?id=3ecda2bb-c9cf-4caf-8240-72e16a35a84d&lang=nl">
+<img src="plaatjes/headerimage.gif" alt="" class="logo" />
+</a>
+</div>
+
+</p>
+
+<div style="clear: both;">
+<br clear=all>
+
+<a id=invoeren></a>
+<h2>Invoeren van de gecodeerde tekst</h2>
+
+<p>In het tekstvak kun je een gecodeerde tekst invoeren. We gaan er van uit dat de interpunctie van de oorspronkelijk
+tekst niet mee gecodeerd is. Mochten er toch interpuncties in de tekst voorkomen (bijvoorbeeld spaties of komma's),
+dan worden die door de programma's op deze pagina's genegeerd. Drukken op een van de buttons zet een voorgeprogrammeerde
+tekst in het tekstvak.
+
+<h2>Analyseren van de gecodeerde tekst</h2>
+
+<p>Na drukken op de button 'analyseer!' kan uit de tabel worden afgelezen hoeveel overeenkomstige letters er zijn en wat
+het percentage daarvan is, als de tekst over het aantal aangegeven posities verschoven wordt. Hiermee kan de lengte van
+het sleutelwoord bepaald worden.
+De button 'leegmaken' wist de gegevens.
+
+
+<form id="cwlform">
+
+<div style="float:left;">
+<div>
+<div style="float: left;" >
+<textarea id="text" rows="10" cols="50" onKeyUp="" style="margin-bottom: 10px;">
+</textarea>
+</div>
+
+<div style="float: left; margin-left: 20px;">
+Klik hieronder om een tekst in te vullen.<br><br>
+<input type="button" value="Tekst opg 1.7" onclick="tekstInvullen('vige1')">
+<input type="button" value="Tekst opg 1.8" onclick="tekstInvullen('vige2')"><br><br><br><br><br><br>
+
+<input type="button" value="Analyseer!" onClick="countmatches(document.getElementById('cwlform').text.value)">
+<input type="reset" value="Leegmaken" onClick="resetSchuifTabel()">
+</div>
+</div>
+
+<div style="float:left">
+<table border="1">
+ <tr>
+
+  <td align="center">Verschuiving
+  <td><input type="button" value="<-" onClick="shiftBackFreq();countmatches(document.getElementById('cwlform').text.value)"></td>
+  <td align="center" id="sval1">1</td>
+  <td align="center" id="sval2">2
+  <td align="center" id="sval3">3
+  <td align="center" id="sval4">4
+  <td align="center" id="sval5">5
+  <td align="center" id="sval6">6
+  <td align="center" id="sval7">7
+  <td align="center" id="sval8">8
+  <td align="center" id="sval9">9
+  <td align="center" id="sval10">10
+  <td align="center" id="sval11">11
+  <td align="center" id="sval12">12
+  <td align="center" id="sval13">13
+  <td align="center" id="sval14">14
+  <td align="center" id="sval15">15
+ <td><input type="button" value="->" onClick="shiftFreq();countmatches(document.getElementById('cwlform').text.value)"></td>	
+ <tr>
+
+  <td align="center">Overeenkomsten</td><td></td>
+  <td align="center" id="sfreq1"></td>
+  <td align="center" id="sfreq2">
+  <td align="center" id="sfreq3">
+  <td align="center" id="sfreq4">
+  <td align="center" id="sfreq5">
+  <td align="center" id="sfreq6">
+  <td align="center" id="sfreq7">
+  <td align="center" id="sfreq8">
+
+  <td align="center" id="sfreq9">
+  <td align="center" id="sfreq10">
+  <td align="center" id="sfreq11">
+  <td align="center" id="sfreq12">
+  <td align="center" id="sfreq13">
+  <td align="center" id="sfreq14">
+  <td align="center" id="sfreq15">
+ <td></td>
+
+ <tr>
+ <td align="center">%</td>
+ <td></td>
+ <td align="center" id="spercent1">
+ <td align="center" id="spercent2">
+ <td align="center" id="spercent3">
+ <td align="center" id="spercent4">
+ <td align="center" id="spercent5">
+ <td align="center" id="spercent6">
+ <td align="center" id="spercent7">
+ <td align="center" id="spercent8">
+ <td align="center" id="spercent9">
+ <td align="center" id="spercent10">
+ <td align="center" id="spercent11">
+ <td align="center" id="spercent12">
+ <td align="center" id="spercent13">
+ <td align="center" id="spercent14">
+ <td align="center" id="spercent15">
+ <td></td>
+</table>
+</div>
+</div>
+
+<div id="verschuiving-container" style="width:400px;height:300px;float: right;display:none;"></div>
+
+<br style="clear:both;">
+
+<!-- NB: niet zomaar weggooien dit stuk. Dit is de letterparen analyse.
+<h2>Letterparen analyse</h2>
+
+<input type="button" value="Analyseer!" onClick="vulLetterparenTabel(document.getElementById('cwlform').text.value)">
+<input type="reset" value="Leegmaken" onClick="resetPaarTabel()">
+
+
+<table border="1">
+ <tr>
+
+  <td align="center">Verschuiving
+  <td><input type="button" value="<-" onClick="shiftBackPaarFreq();vulLetterparenTabel(document.getElementById('cwlform').text.value)"></td>
+  <td align="center" id="pval1">1</td>
+  <td align="center" id="pval2">2
+  <td align="center" id="pval3">3
+  <td align="center" id="pval4">4
+  <td align="center" id="pval5">5
+  <td align="center" id="pval6">6
+  <td align="center" id="pval7">7
+  <td align="center" id="pval8">8
+  <td align="center" id="pval9">9
+  <td align="center" id="pval10">10
+  <td align="center" id="pval11">11
+  <td align="center" id="pval12">12
+  <td align="center" id="pval13">13
+  <td align="center" id="pval14">14
+  <td align="center" id="pval15">15
+ <td><input type="button" value="->" onClick="shiftPaarFreq();vulLetterparenTabel(document.getElementById('cwlform').text.value)"></td>
+ <tr>
+
+  <td align="center">Overeenkomsten</td><td></td>
+  <td align="center" id="pfreq1"></td>
+  <td align="center" id="pfreq2">
+  <td align="center" id="pfreq3">
+  <td align="center" id="pfreq4">
+  <td align="center" id="pfreq5">
+  <td align="center" id="pfreq6">
+  <td align="center" id="pfreq7">
+  <td align="center" id="pfreq8">
+
+  <td align="center" id="pfreq9">
+  <td align="center" id="pfreq10">
+  <td align="center" id="pfreq11">
+  <td align="center" id="pfreq12">
+  <td align="center" id="pfreq13">
+  <td align="center" id="pfreq14">
+  <td align="center" id="pfreq15">
+ <td></td>
+</table>
+
+<div id="paar-container" style="width:400px;height:300px;float: right; visibility:collapse;"></div>
+-->
+</form>
+
+<br style="clear: both;">
+
+<a id=splitsen></a>
+<h2>Splitsen van de code in subcodes</h2>
+
+<p>Na het analyseren is een schatting voor de lengte van het codewoord bekend. Die schatting kan hieronder
+worden ingevuld. De button 'Deel uit!' zal de letters van de tekst dan om en om verdelen over evenzovele tekstvakken,
+wat een aantal subcodes oplevert.
+
+<form id="shuffleform">
+
+Lengte van codewoord: <input type="text" maxlength=2 size=2 id=cwl onChange="optieLijstVullen()">
+<input type="button" value="Deel uit!" onClick="shuffle(document.getElementById('text').value, document.getElementById('cwl').value)">
+<input type="reset" value="Leegmaken" onclick="resetSubCode()">
+<div id="shuffleDiv">
+</div>
+
+</form>
+
+<a id=freqanalysis></a>
+
+<h2>Frequentieanalyse op de subcodes</h2>
+De volgende stap is kraken van de subcodes, die als de lengte juist is, allemaal gecodeerd zijn volgens het Caesar-systeem.
+Dit kan door op elk van de subcodes een frequentieanalyse los te laten.
+
+Selecteer hieronder de subcode die je wilt analyseren. De frequentietabel geeft dan de percentages aan waarin de diverse
+letters voorkomen. Deze kunnen vervolgens vergeleken worden met de letterfrequenties van het Nederlands of het Engels
+door de gewenste taal te selecteren. Met de pijltjes naast de tabel kan geschoven worden om de gebruikte eenletterige
+Caesar-sleutel te vinden. Dat is de letter die boven de <i>a</i> staat (en dus de letter die na decodering <i>a</i> oplevert).
+
+
+<form id="letterform">
+<select style="margin-left: 20px; margin-top: 5px; width:200px;" id="selectSubcode" onChange="selectSubcodeClick()">
+<option value="0">--selecteer--</option>
+</select>
+<table border=1 style="margin-top:10px;">
+ <tr>
+	<td style="border:none;">
+  <td align="center">A
+  <td align="center">B
+  <td align="center">C
+  <td align="center">D
+  <td align="center">E
+  <td align="center">F
+  <td align="center">G
+  <td align="center">H
+  <td align="center">I
+  <td align="center">J
+  <td align="center">K
+  <td align="center">L
+  <td align="center">M
+  <td align="center">N
+  <td align="center">O
+  <td align="center">P
+  <td align="center">Q
+  <td align="center">R
+  <td align="center">S
+  <td align="center">T
+  <td align="center">U
+  <td align="center">V
+  <td align="center">W
+  <td align="center">X
+  <td align="center">Y
+  <td align="center">Z
+ <tr>
+
+ <td style="border:none;">Frequentie:</td>
+  <td align="center" id="freq0">?
+  <td align="center" id="freq1">?
+  <td align="center" id="freq2">?
+  <td align="center" id="freq3">?
+  <td align="center" id="freq4">?
+  <td align="center" id="freq5">?
+  <td align="center" id="freq6">?
+  <td align="center" id="freq7">?
+  <td align="center" id="freq8">?
+
+  <td align="center" id="freq9">?
+  <td align="center" id="freq10">?
+  <td align="center" id="freq11">?
+  <td align="center" id="freq12">?
+  <td align="center" id="freq13">?
+  <td align="center" id="freq14">?
+  <td align="center" id="freq15">?
+  <td align="center" id="freq16">?
+  <td align="center" id="freq17">?
+
+  <td align="center" id="freq18">?
+  <td align="center" id="freq19">?
+  <td align="center" id="freq20">?
+  <td align="center" id="freq21">?
+  <td align="center" id="freq22">?
+  <td align="center" id="freq23">?
+  <td align="center" id="freq24">?
+  <td align="center" id="freq25">?
+
+ <tr>
+
+ <td style="border:none;">Percentage:</td>
+  <td align="center" id="perc0">?
+  <td align="center" id="perc1">?
+  <td align="center" id="perc2">?
+  <td align="center" id="perc3">?
+  <td align="center" id="perc4">?
+  <td align="center" id="perc5">?
+  <td align="center" id="perc6">?
+  <td align="center" id="perc7">?
+  <td align="center" id="perc8">?
+
+  <td align="center" id="perc9">?
+  <td align="center" id="perc10">?
+  <td align="center" id="perc11">?
+  <td align="center" id="perc12">?
+  <td align="center" id="perc13">?
+  <td align="center" id="perc14">?
+  <td align="center" id="perc15">?
+  <td align="center" id="perc16">?
+  <td align="center" id="perc17">?
+
+  <td align="center" id="perc18">?
+  <td align="center" id="perc19">?
+  <td align="center" id="perc20">?
+  <td align="center" id="perc21">?
+  <td align="center" id="perc22">?
+  <td align="center" id="perc23">?
+  <td align="center" id="perc24">?
+  <td align="center" id="perc25">?
+
+ <tr>
+ <td style="border:none; text-align: right;"><input type="button" value="<-" onClick="shiftback('letterform'),drawSubcodeFreqChart(true)">
+  <td align="center" id="letter0">a</td>
+  <td align="center" id="letter1">b</td>
+  <td align="center" id="letter2">c</td>
+  <td align="center" id="letter3">d</td>
+  <td align="center" id="letter4">e</td>
+  <td align="center" id="letter5">f</td>
+  <td align="center" id="letter6">g</td>
+  <td align="center" id="letter7">h</td>
+
+  <td align="center" id="letter8">i</td>
+  <td align="center" id="letter9">j</td>
+  <td align="center" id="letter10">k</td>
+  <td align="center" id="letter11">l</td>
+  <td align="center" id="letter12">m</td>
+  <td align="center" id="letter13">n</td>
+  <td align="center" id="letter14">o</td>
+  <td align="center" id="letter15">p</td>
+  <td align="center" id="letter16">q</td>
+
+  <td align="center" id="letter17">r</td>
+  <td align="center" id="letter18">s</td>
+  <td align="center" id="letter19">t</td>
+  <td align="center" id="letter20">u</td>
+  <td align="center" id="letter21">v</td>
+  <td align="center" id="letter22">w</td>
+  <td align="center" id="letter23">x</td>
+  <td align="center" id="letter24">y</td>
+  <td align="center" id="letter25">z</td>
+
+  <td style="border: none; text-align: left;"><input type="button" value="->" onClick="shift('letterform'),drawSubcodeFreqChart(true)">
+
+  <tr>
+
+  </table>
+
+<div style="margin-top:10px; margin-left:100px;">
+<input type="button" id="tabel-button-show" value="Frequentietabel tonen" onClick="drawSubcodeFreqChart(true)">
+<input type="button" id="tabel-button-hide" value="Frequentietabel verbergen" onClick="drawSubcodeFreqChart(false)" style="display:none">
+
+<div id="frequentie-container" style="width:800px;height:350px;display:none;">
+	Selecteer een taal om je code mee te vergelijken.
+	<select style="margin:5px; width:200px;" id="selectTaal" onChange="drawSubcodeFreqChart(true)">
+		<option value="0" selected>--Selecteer een taal--</option>
+		<option value="nl">Nederlands</option>
+		<option value="en">Engels</option>
+	</select>
+	<div id="subcode-chart-container" style="width:800px;height:300px;"></div>
+</div>
+</div>
+</form>
+
+<a id=decode></a>
+<h2>Decoderen van de code</h2>
+
+<p>Hieronder kan het vermoede sleutelwoord ingevoerd worden. Nog onbekende letters mogen daarbij door een '*' vervangen worden
+Klik vervolgens op 'Decodeer' om de tekst te decoderen.
+
+
+<form id="vigenereform">
+<table border=0>
+ <tr>
+  <td align="right">Codewoord:</td>
+  <td align="left">
+  <input type="text" maxlength=12 align=right size=12 id=codeword value="">
+  <td align="right">
+  <input type="button" value="Decodeer!" onClick="document.getElementById('vigenereform').encoded.value=decode(document.getElementById('text').value,document.getElementById('vigenereform').codeword.value)">
+  <input type="reset" value="Leegmaken">
+</td>
+</tr>
+ <tr>
+	<td></td>
+	<td colspan="2"><textarea id="encoded" rows="9" cols="50" readonly></textarea></td>
+
+ <tr>
+
+  </table>
+</form>
+
+<h2>Coderen</h2>
+
+Je kunt natuurlijk ook tekst coderen. Geef hieronder een codewoord en vul de te coderen tekst in.
+Druk vervolgens op de knop 'Coderen'. Hierbij worden interpuncties verwijderd.
+
+
+<form id="codeerform">
+<table style="margin: 15px;" border=0>
+ <tr>
+  <td align="right">Codewoord:
+  <input type="text" maxlength=12 align=right size=12 id=codeword value=""></td>
+  <td align="left">
+	<input type="button" value="Codeer!" onClick="document.getElementById('codeerform').encoded.value=code(document.getElementById('codeerform').original.value,document.getElementById('codeerform').codeword.value)">
+	<input type="reset" value="Leegmaken">
+</td>
+</tr>
+ <tr>
+	<td><textarea id="original" rows="9" cols="50" ></textarea></td>
+	<td><textarea id="encoded" rows="9" cols="50" readonly></textarea></td>
+
+ <tr>
+
+  </table>
+</form>
+
+
+</body>
+
+</html>

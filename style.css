@@ -1,0 +1,132 @@
+body {
+	margin: 3em;
+	font-family: "Trebuchet MS", sans-serif;
+	font-size: smaller;
+	letter-spacing: 0.03em;
+	margin-bottom: 1em;
+	background-color:#7BA0C9;
+	color:#303030;
+}
+
+a {
+	color: red;
+	text-decoration: none;
+}
+
+img {
+  margin-left: 1em;
+  margin-bottom: 1em;	
+}
+
+img.app-icon {
+	float: left;
+	border: none;
+	padding-top: 0em;
+	padding-right: 1em;
+}
+
+.menu {
+	font-weight: bold;
+	font-size: 1.1em;
+	text-align: right;
+	position:relative;
+}
+
+.menu a {
+  color: #303030; 
+}
+
+.content {
+	z-index:2;
+	position:relative;
+	background-color: #FFFFFF;
+	padding:1em;
+	border:3px solid #002B60;
+}
+
+IMG {
+	position:relative;
+	border:none;
+	z-index:2;
+	padding:1em;
+}
+
+IMG.logo {
+	/*position:relative;*/
+	border:none;
+	/*z-index:2;*/
+	z-index:0;
+	position:absolute;
+	padding:0;
+	top:1.5em;
+	left:2em;
+}
+
+.pagelogo {
+	position:absolute;
+	left:50%;
+	z-index:5;
+}
+
+.pagetitle {
+	font-family: Verdana, sans-serif, Helvetica;
+	padding-top:20px;
+	text-align: right;
+}
+
+.quote {
+	font-family: sans-serif;
+	font-size: 90%;
+}
+
+P.weblogheader {
+	font-weight:bold;
+	font-size:70%;
+	text-align:right;
+	float:right;
+	color:#505050;
+}
+
+.minussidebar {
+	margin-right:190px;
+}
+
+.weblogentry {
+	text-align:justify;
+	position:relative;
+	z-index:1;
+	background-color: #FFFFE5;
+	padding:1em;
+	padding-top:0;
+	border:2px solid black;
+}
+
+.sidebar {
+	float:right;
+	width:150px;
+	border:2px solid black;
+	padding:1em;
+	padding-top:0;
+	background-color:white;
+}
+
+ul.sidebarul {
+	margin-left:1em;
+	padding-left:0pt;
+}
+
+ul.sidebarul li {
+  padding-bottom:1em;
+}
+
+.weblogcontrol {
+	font-weight:bold;
+	font-size:80%;
+}
+
+td {
+	min-width: 30px;
+}
+
+h2 {
+}

@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+
+<head>
+
+<title>Caesar codes kraken</title>
+
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta name="language" content="nl" />
+
+
+<link rel="icon" type="image/png" href="plaatjes/favicon.ico" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<script type="text/javascript" src="js/algemeen.js"></script>
+<script type="text/javascript" src="js/caesar.js"></script>
+<script type="text/javascript" src="js/gecodeerdeteksten.js"></script>
+
+<script type="text/javascript" src="js/flotr/lib/prototype-1.6.0.2.js"></script>
+<script type="text/javascript" src="js/flotr/lib/canvas2image.js"></script>
+<script type="text/javascript" src="js/flotr/lib/canvastext.js"></script>
+<script type="text/javascript" src="js/flotr/flotr-0.2.0-alpha.js"></script>
+
+</head>
+
+<body>
+
+<div class="content">
+<div style="float:right"><a href="index.html">terug</a></div><br>
+<br style="clear:both;">
+<div style="float:right; font-size: 20px; font-weight: bold;">Caesar codes kraken</div>
+<p class="pagetitle">
+
+<div style="float:left;">
+<a  href="http://www.ewi.tudelft.nl/live/pagina.jsp?id=3ecda2bb-c9cf-4caf-8240-72e16a35a84d&lang=nl">
+<img src="plaatjes/headerimage.gif" alt="" class="logo" />
+</a>
+</div>
+
+</p>
+
+<div style="clear: both;">
+<br clear=all>
+
+<div style="clear: both;">
+<br clear=all>
+
+<a id=invoeren></a>
+<h2>Invoeren van de gecodeerde tekst</h2>
+
+<p>In het tekstvak kun je een gecodeerde tekst invoeren. We gaan er van uit dat de interpunctie van de oorspronkelijk
+tekst niet mee gecodeerd is. Mochten er toch interpuncties in de tekst voorkomen (bijvoorbeeld spaties of komma's),
+dan worden die door de programma's op deze pagina's genegeerd. Drukken op een van de buttons zet een voorgeprogrammeerde
+tekst in het tekstvak.
+
+<form id="cwlform">
+
+<div style="float:left;">
+<div>
+<div style="float: left;" >
+<textarea id="text" rows="10" cols="50" onKeyUp="" style="margin-bottom: 10px;">
+</textarea>
+</div>
+
+<div style="float: left; margin-left: 20px;">
+Klik hieronder om een tekst in te vullen.<br><br>
+<input type="button" value="Tekst opg 1.1(c)" onclick="tekstInvullen('caesar1')">
+<br><br><br><br><br><br>
+
+<input type="button" value="Analyseer!" onClick="analyse(document.getElementById('cwlform').text.value),drawFreqChart(true)">
+<input type="reset" value="Leegmaken" onClick="resetCaesarCode()">
+</div>
+</div>
+</div>
+</form>
+
+<br style="clear: both;">
+
+<a id=freqanalysis></a>
+
+<h2>Frequentieanalyse code</h2>
+
+<p>Na drukken op de button 'analyseer!' geeft de frequentietabel de percentages aan waarin de diverse
+gecodeerde letters voorkomen. Deze kunnen vervolgens vergeleken worden met de letterfrequenties van het
+Nederlands of het Engels door de gewenste taal te selecteren. Met de pijltjes naast de tabel kan geschoven
+worden om de gebruikte eenletterige Caesar-sleutel te vinden.
+Dat is de letter die boven de <i>a</i> staat (en dus de letter die na decodering <i>a</i> oplevert).
+
+De button 'leegmaken' wist de gegevens.
+
+<form id="letterform">
+
+<table border=1 style="margin-top:10px;">
+ <tr>
+	<td style="border:none;">
+  <td align="center">A
+  <td align="center">B
+  <td align="center">C
+  <td align="center">D
+  <td align="center">E
+  <td align="center">F
+  <td align="center">G
+  <td align="center">H
+  <td align="center">I
+  <td align="center">J
+  <td align="center">K
+  <td align="center">L
+  <td align="center">M
+  <td align="center">N
+  <td align="center">O
+  <td align="center">P
+  <td align="center">Q
+  <td align="center">R
+  <td align="center">S
+  <td align="center">T
+  <td align="center">U
+  <td align="center">V
+  <td align="center">W
+  <td align="center">X
+  <td align="center">Y
+  <td align="center">Z
+ <tr>
+
+ <td style="border:none;">Frequentie:</td>
+  <td align="center" id="freq0">?
+  <td align="center" id="freq1">?
+  <td align="center" id="freq2">?
+  <td align="center" id="freq3">?
+  <td align="center" id="freq4">?
+  <td align="center" id="freq5">?
+  <td align="center" id="freq6">?
+  <td align="center" id="freq7">?
+  <td align="center" id="freq8">?
+
+  <td align="center" id="freq9">?
+  <td align="center" id="freq10">?
+  <td align="center" id="freq11">?
+  <td align="center" id="freq12">?
+  <td align="center" id="freq13">?
+  <td align="center" id="freq14">?
+  <td align="center" id="freq15">?
+  <td align="center" id="freq16">?
+  <td align="center" id="freq17">?
+
+  <td align="center" id="freq18">?
+  <td align="center" id="freq19">?
+  <td align="center" id="freq20">?
+  <td align="center" id="freq21">?
+  <td align="center" id="freq22">?
+  <td align="center" id="freq23">?
+  <td align="center" id="freq24">?
+  <td align="center" id="freq25">?
+
+ <tr>
+
+ <td style="border:none;">Percentage:</td>
+  <td align="center" id="perc0">?
+  <td align="center" id="perc1">?
+  <td align="center" id="perc2">?
+  <td align="center" id="perc3">?
+  <td align="center" id="perc4">?
+  <td align="center" id="perc5">?
+  <td align="center" id="perc6">?
+  <td align="center" id="perc7">?
+  <td align="center" id="perc8">?
+
+  <td align="center" id="perc9">?
+  <td align="center" id="perc10">?
+  <td align="center" id="perc11">?
+  <td align="center" id="perc12">?
+  <td align="center" id="perc13">?
+  <td align="center" id="perc14">?
+  <td align="center" id="perc15">?
+  <td align="center" id="perc16">?
+  <td align="center" id="perc17">?
+
+  <td align="center" id="perc18">?
+  <td align="center" id="perc19">?
+  <td align="center" id="perc20">?
+  <td align="center" id="perc21">?
+  <td align="center" id="perc22">?
+  <td align="center" id="perc23">?
+  <td align="center" id="perc24">?
+  <td align="center" id="perc25">?
+
+ <tr>
+ <td style="border:none; text-align: right;"><input type="button" value="<-" onClick="shiftback('letterform'),drawFreqChart(true)">
+  <td align="center" id="letter0">a</td>
+  <td align="center" id="letter1">b</td>
+  <td align="center" id="letter2">c</td>
+  <td align="center" id="letter3">d</td>
+  <td align="center" id="letter4">e</td>
+  <td align="center" id="letter5">f</td>
+  <td align="center" id="letter6">g</td>
+  <td align="center" id="letter7">h</td>
+
+  <td align="center" id="letter8">i</td>
+  <td align="center" id="letter9">j</td>
+  <td align="center" id="letter10">k</td>
+  <td align="center" id="letter11">l</td>
+  <td align="center" id="letter12">m</td>
+  <td align="center" id="letter13">n</td>
+  <td align="center" id="letter14">o</td>
+  <td align="center" id="letter15">p</td>
+  <td align="center" id="letter16">q</td>
+
+  <td align="center" id="letter17">r</td>
+  <td align="center" id="letter18">s</td>
+  <td align="center" id="letter19">t</td>
+  <td align="center" id="letter20">u</td>
+  <td align="center" id="letter21">v</td>
+  <td align="center" id="letter22">w</td>
+  <td align="center" id="letter23">x</td>
+  <td align="center" id="letter24">y</td>
+  <td align="center" id="letter25">z</td>
+
+  <td style="border: none; text-align: left;"><input type="button" value="->" onClick="shift('letterform'),drawFreqChart(true)">
+
+  <tr>
+
+  </table>
+
+<div style="margin-top:10px; margin-left:100px;">
+<input type="button" id="tabel-button-show" value="Frequentietabel tonen" onClick="drawFreqChart(true)">
+<input type="button" id="tabel-button-hide" value="Frequentietabel verbergen" onClick="drawFreqChart(false)" style="display:none">
+
+<div id="frequentie-container" style="width:800px;height:350px;display:none;">
+	Selecteer een taal om je code mee te vergelijken.
+	<select style="margin:5px; width:200px;" id="selectTaal" onChange="drawFreqChart(true)">
+		<option value="0" selected>selecteer een taal</option>
+		<option value="nl">Nederlands</option>
+		<option value="en">Engels</option>
+	</select>
+	<div id="freq-chart-container" style="width:800px;height:300px;"></div>
+</div>
+</div>
+</form>
+
+
+<a id=decode></a>
+<h2>Decoderen van de code</h2>
+
+<p>Hieronder kan de sleutel ingevoerd worden.
+Klik vervolgens op 'Decodeer' om de tekst te decoderen.
+
+<form id="caesarform">
+<table border=0>
+ <tr>
+  <td align="left" >Gebruikte verschuiving:
+  <input type="text" id="caesar-codeletter" maxlength=1 size=2></input>
+  <td align="right">
+  <input type="button" value="Decodeer!" onClick="document.getElementById('caesarform').encoded.value=decode(document.getElementById('text').value,document.getElementById('caesar-codeletter').value)">
+  <input type="reset" value="Leegmaken">
+</td>
+</tr>
+ <tr>
+	<td colspan="2"><textarea id="encoded" rows="9" cols="50" readonly></textarea></td>
+
+ <tr>
+
+  </table>
+</form>
+
+<h2>Coderen</h2>
+
+Je kunt natuurlijk ook tekst coderen. Geef hieronder een letter en vul de te coderen tekst in. Druk vervolgens op de knop 'Coderen'.
+
+
+<form id="codeerform">
+<table style="margin: 15px;" border=0>
+ <tr>
+  <td align="right">Codeletter:
+  <input type="text" maxlength=1 align=right size=2 id=codeword value=""></td>
+  <td align="left">
+	<input type="button" value="Codeer!" onClick="document.getElementById('codeerform').encoded.value=code(document.getElementById('codeerform').original.value,document.getElementById('codeerform').codeword.value)">
+	<input type="reset" value="Leegmaken">
+</td>
+</tr>
+ <tr>
+	<td><textarea id="original" rows="9" cols="50" ></textarea></td>
+	<td><textarea id="encoded" rows="9" cols="50" readonly></textarea></td>
+
+ <tr>
+
+  </table>
+</form>
+
+</body>
+
+</html>
